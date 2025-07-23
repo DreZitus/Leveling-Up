@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtividade RPG</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="flex justify-between items-center">
+                <h1 class="app-title">⚔️ PROTOTIPO GAMEFICAÇÃO</h1>
+                <div class="header-controls">
+                    <button id="darkModeToggle" class="btn btn--outline btn--sm">
+                        <span id="darkModeIcon">🌙</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <nav class="tab-navigation">
+            <button class="tab-btn active" data-tab="status">📈 Status</button>
+            <button class="tab-btn" data-tab="mapa">🗺️ Mapa da vida</button>
+            <button class="tab-btn" data-tab="quests">📜 Quests</button>
+        </nav>
+
+        <!-- Tab Content -->
+        <main class="tab-content">
+            <!-- Status & Progresso Tab -->
+            <div id="status-tab" class="tab-panel active">
+                <div class="player-info">
+                    <div class="card">
+                        <div class="card__body">
+                            <div class="player-level">
+                                <h2>Nível <span id="playerLevel">1</span></h2>
+                                <div class="xp-container">
+                                    <div class="xp-bar">
+                                        <div class="xp-progress" id="xpProgress"></div>
+                                    </div>
+                                    <div class="xp-text">
+                                        <span id="currentXP">0</span> / <span id="requiredXP">100</span> XP
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="attributes-section">
+                        <div class="card">
+                            <div class="card__body">
+                                <h3>Atributos</h3>
+                                <div class="available-points" id="availablePointsSection" style="display: none;">
+                                    <div class="status status--success">
+                                        <span id="availablePoints">0</span> pontos disponíveis para distribuir
+                                    </div>
+                                </div>
+                                <div class="attributes-grid">
+                                    <div class="attribute">
+                                        <div class="attribute-header">
+                                            <span class="attribute-icon">🎯</span>
+                                            <span class="attribute-name">Foco</span>
+                                            <span class="attribute-value" id="focoValue">0</span>
+                                        </div>
+                                        <button class="btn btn--sm btn--primary attribute-btn" data-attribute="foco" style="display: none;">+</button>
+                                    </div>
+                                    <div class="attribute">
+                                        <div class="attribute-header">
+                                            <span class="attribute-icon">💪</span>
+                                            <span class="attribute-name">Corpo</span>
+                                            <span class="attribute-value" id="forcaValue">0</span>
+                                        </div>
+                                        <button class="btn btn--sm btn--primary attribute-btn" data-attribute="forca" style="display: none;">+</button>
+                                    </div>
+                                    <div class="attribute">
+                                        <div class="attribute-header">
+                                            <span class="attribute-icon">🧠</span>
+                                            <span class="attribute-name">Mente</span>
+                                            <span class="attribute-value" id="inteligenciaValue">0</span>
+                                        </div>
+                                        <button class="btn btn--sm btn--primary attribute-btn" data-attribute="inteligencia" style="display: none;">+</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="achievements-section">
+                        <div class="card">
+                            <div class="card__body">
+                                <h3>Conquistas</h3>
+                                <div id="achievementsList" class="achievements-list">
+                                    <!-- Achievements will be populated by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mapa de Metas Tab -->
+            <div id="mapa-tab" class="tab-panel">
+                <div class="card">
+                    <div class="card__body">
+                        <h2>Mapa de Vida</h2>
+                        <form id="goalForm" class="goal-form" style="margin-bottom: 24px;">
+                            <input type="text" id="goalName" class="form-control" placeholder="Nome do objetivo" required>
+                            <select id="goalPhase" class="form-control" required>
+                                <option value="1">projetos</option>
+                                <option value="2">corpo</option>
+                                <option value="3">mente</option>
+                                <option value="4">vida</option>
+                            </select>
+                            <input type="text" id="goalDescription" class="form-control" placeholder="Descrição" required>
+                            <button type="submit" class="btn btn--primary">Adicionar Objetivo</button>
+                        </form>
+                        <div class="goals-map" id="goalsMap">
+                            <!-- Goals map will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quests Tab -->
+            <div id="quests-tab" class="tab-panel">
+                <div class="quests-container">
+                    <div class="quest-form-section">
+                        <div class="card">
+                            <div class="card__body">
+                                <h3>Nova Quest</h3>
+                                <form id="questForm" class="quest-form">
+                                    <div class="form-group">
+                                        <label class="form-label" for="questTitle">Título da Quest</label>
+                                        <input type="text" id="questTitle" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="questType">Tipo</label>
+                                        <select id="questType" class="form-control">
+                                            <option value="secondary">Secundária</option>
+                                            <option value="main">Principal</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group" id="goalSelection" style="display: none;">
+                                        <label class="form-label" for="questGoal">Meta Relacionada</label>
+                                        <select id="questGoal" class="form-control">
+                                            <option value="">Selecione uma meta...</option>
+                                        </select>
+                                    </div>
+                                    <button type="submit" class="btn btn--primary">Criar Quest</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="quests-lists">
+                        <div class="card">
+                            <div class="card__body">
+                                <h3>Quests Principais</h3>
+                                <div id="mainQuestsList" class="quests-list">
+                                    <!-- Main quests will be populated by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card__body">
+                                <h3>Quests Secundárias</h3>
+                                <div id="secondaryQuestsList" class="quests-list">
+                                    <!-- Secondary quests will be populated by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Level Up Modal -->
+    <div id="levelUpModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h2>🎉 Parabéns! Você subiu de nível!</h2>
+                <p>Você alcançou o nível <span id="newLevel"></span>!</p>
+                <p>Você tem 3 pontos para distribuir entre seus atributos.</p>
+                <button class="btn btn--primary" onclick="closeLevelUpModal()">Continuar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Goal Details Modal -->
+    <div id="goalModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="goalModalTitle"></h3>
+                <button class="modal-close" onclick="closeGoalModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p id="goalModalDescription"></p>
+                <div class="goal-status-controls">
+                    <label class="form-label">Status:</label>
+                    <select id="goalStatusSelect" class="form-control">
+                        <option value="not_started">Não Iniciado</option>
+                        <option value="in_progress">Em Andamento</option>
+                        <option value="completed">Concluído</option>
+                    </select>
+                </div>
+                <div class="modal-actions">
+                    <button class="btn btn--primary" onclick="updateGoalStatus()">Salvar</button>
+                    <button class="btn btn--secondary" onclick="closeGoalModal()">Cancelar</button>
+                    <button class="btn btn--danger" onclick="removeGoalFromModal()">Remover Objetivo</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
