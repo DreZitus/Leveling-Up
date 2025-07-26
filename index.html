@@ -11,7 +11,7 @@
         <!-- Header -->
         <header class="app-header">
             <div class="flex justify-between items-center">
-                <h1 class="app-title">⚔️ PROTOTIPO GAMEFICAÇÃO</h1>
+                <h1 class="app-title flex items-center"> <img src="assets/logo-rpg.png" alt="Espada" class="logo"> GAMELIFE </h1>
                 <div class="header-controls">
                     <button id="darkModeToggle" class="btn btn--outline btn--sm">
                         <span id="darkModeIcon">🌙</span>
@@ -20,16 +20,16 @@
             </div>
         </header>
 
-        <!-- Navigation Tabs -->
+        <!-- janela de navegação -->
         <nav class="tab-navigation">
             <button class="tab-btn active" data-tab="status">📈 Status</button>
             <button class="tab-btn" data-tab="mapa">🗺️ Mapa da vida</button>
             <button class="tab-btn" data-tab="quests">📜 Quests</button>
         </nav>
 
-        <!-- Tab Content -->
+        <!-- janela de conteudo -->
         <main class="tab-content">
-            <!-- Status & Progresso Tab -->
+            <!-- janela de status -->
             <div id="status-tab" class="tab-panel active">
                 <div class="player-info">
                     <div class="card">
@@ -87,16 +87,7 @@
                         </div>
                     </div>
 
-                    <div class="achievements-section">
-                        <div class="card">
-                            <div class="card__body">
-                                <h3>Conquistas</h3>
-                                <div id="achievementsList" class="achievements-list">
-                                    <!-- Achievements will be populated by JavaScript -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
 
@@ -159,7 +150,7 @@
                             <div class="card__body">
                                 <h3>Quests Principais</h3>
                                 <div id="mainQuestsList" class="quests-list">
-                                    <!-- Main quests will be populated by JavaScript -->
+                                    <!-- quest principal sera cahamada pelo javascrpt -->
                                 </div>
                             </div>
                         </div>
@@ -168,7 +159,7 @@
                             <div class="card__body">
                                 <h3>Quests Secundárias</h3>
                                 <div id="secondaryQuestsList" class="quests-list">
-                                    <!-- Secondary quests will be populated by JavaScript -->
+                                    <!-- quest secundaria sera chamada pelo javascrpt -->
                                 </div>
                             </div>
                         </div>
@@ -178,7 +169,7 @@
         </main>
     </div>
 
-    <!-- Level Up Modal -->
+    <!-- Modal level up -->
     <div id="levelUpModal" class="modal">
         <div class="modal-content">
             <div class="modal-body">
@@ -190,7 +181,7 @@
         </div>
     </div>
 
-    <!-- Goal Details Modal -->
+    <!-- Modal detalhe objetivo -->
     <div id="goalModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
