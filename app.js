@@ -31,7 +31,7 @@ let gameState = {
 
 // ...existing code...
 
-// Goal Form Event
+// Forma de objetivo por evento
 document.getElementById('goalForm').addEventListener('submit', function(e) {
     e.preventDefault();
     const name = document.getElementById('goalName').value.trim();
@@ -52,25 +52,7 @@ document.getElementById('goalForm').addEventListener('submit', function(e) {
     saveGameState();
 });
 
-// Remove Goal
-function removeGoal(goalId) {
-    // Remove quests associadas ao objetivo
-    gameState.quests = gameState.quests.filter(q => q.goalId !== goalId);
-    // Remove o objetivo
-    gameState.goals = gameState.goals.filter(g => g.id !== goalId);
-    renderGoalsMap();
-    renderQuests();
-    saveGameState();
-}
 
-// Remove o objetivo do modal
-
-function removeGoalFromModal() {
-    if (window.currentGoalId) {
-        removeGoal(window.currentGoalId);
-        closeGoalModal();
-    }
-}
 
 // ...saida do codigo
 
@@ -475,6 +457,7 @@ function renderGoalsMap() {
                         <div class="goal-node ${goal.status}" onclick="showGoalModal(${goal.id})">
                             <div class="goal-icon">${getGoalIcon(goal.status)}</div>
                             <div class="goal-name">${goal.name}</div>
+                            <button class="btn btn--sm btn--outline" onclick="event.stopPropagation(); removeGoal(${goal.id});">🗑️</button>
                         </div>
                     `).join('')}
                 </div>
@@ -632,6 +615,28 @@ function playSound(type) {
     
     oscillator.start(audioContext.currentTime);
     oscillator.stop(audioContext.currentTime + 0.3);
+}
+
+// Remove objetivoa
+function removeGoal(goalId) {
+    console.log("Removendo goal:", goalId);
+    // Remove quests associadas ao objetivo
+    gameState.quests = gameState.quests.filter(q => q.goalId !== goalId);
+    // Remove o objetivo
+    gameState.goals = gameState.goals.filter(g => g.id != goalId);
+
+    renderGoalsMap();
+    renderQuests();
+    saveGameState();
+}
+
+// Remove o objetivo do modal
+
+function removeGoalFromModal() {
+    if (window.currentGoalId) {
+        removeGoal(window.currentGoalId);
+        closeGoalModal();
+    }
 }
 
 // Data Persistence
