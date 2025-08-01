@@ -470,10 +470,8 @@ function renderGoalsMap() {
 
 function getGoalIcon(status) {
     switch (status) {
-        case 'not_started': return '⭕';
-        case 'in_progress': return '🔄';
-        case 'completed': return '✅';
-        default: return '⭕';
+
+        default: return '🔄';
     }
 }
 
