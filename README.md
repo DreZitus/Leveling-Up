@@ -1,7 +1,7 @@
 🎮 GAMELIFE prototipo.
 
 📖 Introdução
-Bem-vindo ao Produtividade RPG, uma aplicação web inovadora que transforma o gerenciamento de metas e tarefas em uma experiência gamificada envolvente. Combine elementos de RPG com um sistema visual intuitivo para tornar seus objetivos mais motivadores e divertidos de alcançar.
+Bem-vindo ao GAMELIFE, uma aplicação web que transforma o gerenciamento de metas e tarefas em uma experiência gamificada. Combinando elementos de RPG com um sistema visual intuitivo para Visualização de Metas pessoais e construção de quests.
 
 🚀 Como Começar
 Primeiro Acesso
