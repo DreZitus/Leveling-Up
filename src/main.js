@@ -1,6 +1,9 @@
-import { loadGameState, saveGameState, gameState } from './modules/state.js';
-import { setupEventListeners } from './modules/events.js';
-import { updateUI, renderGoalsMap, renderQuests, renderAchievements, renderQuestList, getGoalIcon } from './modules/ui.js';
+import { loadGameState, gameState } from './modules/state.js';
+import { updateUI, renderGoalsMap, renderQuests, renderAchievements } from './modules/ui.js';
+import { toggleDarkMode, switchTab } from './modules/events.js';
+import { handleQuestSubmission, toggleGoalSelection } from './modules/quests.js';
+import { addAttributePoint } from './modules/player.js';
+import { updateGoalStatus } from './modules/goals.js';
 
 // Initialize Application
 document.addEventListener('DOMContentLoaded', function() {
@@ -40,4 +43,4 @@ function setupEventListeners() {
             updateGoalStatus(parseInt(selectedGoal), this.value);
         }
     });
-}
+};

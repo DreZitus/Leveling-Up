@@ -1,9 +1,10 @@
 import { gameState, saveGameState } from './state.js';
 import { renderQuests, renderGoalsMap, renderAchievements } from './ui.js';
 import { gainXP } from './player.js';
-import { unlockAchievement } from './achievements.js';
+import { unlockAchievement } from './utils.js';
 import { updateGoalStatus } from './goals.js';
 import { playSound } from './utils.js';
+import { populateGoalOptions, toggleGoalSelection } from './quests.js';
 
 function handleQuestSubmission(e) {
     e.preventDefault();
@@ -110,4 +111,4 @@ function deleteQuest(questId) {
     saveGameState();
 }
 
-export { handleQuestSubmission, toggleGoalSelection, completeQuest, deleteQuest };
+export { handleQuestSubmission, toggleGoalSelection, completeQuest, deleteQuest, populateGoalOptions };

@@ -1,43 +1,36 @@
-import { gameState, saveGameState } from './state.js';
-import { updateUI } from './ui.js';
-import { showLevelUpModal } from './modals.js';
-import { unlockAchievement } from './achievements.js';
-import { playSound } from './utils.js';
+import { gameState } from './state.js';
+import { updateGoalStatus } from './goals.js';
 
-function gainXP(amount) {
-    gameState.playerData.xp += amount;
+function showLevelUpModal() {
+    const modal = document.getElementById('levelUpModal');
+    document.getElementById('newLevel').textContent = gameState.playerData.level;
+    modal.classList.add('show');
     
-    while (gameState.playerData.xp >= gameState.playerData.xpRequired) {
-        levelUp();
-    }
-    
-    updateUI();
-    saveGameState();
+    const levelElement = document.getElementById('playerLevel');
+    levelElement.classList.add('level-up-animation');
+    setTimeout(() => levelElement.classList.remove('level-up-animation'), 800);
 }
 
-function levelUp() {
-    gameState.playerData.xp -= gameState.playerData.xpRequired;
-    gameState.playerData.level++;
-    gameState.playerData.availablePoints += 3;
-    gameState.playerData.xpRequired = Math.floor(100 * Math.pow(1.2, gameState.playerData.level - 1));
-    
-    showLevelUpModal();
-    
-    if (gameState.playerData.level === 2) {
-        unlockAchievement(2);
-    }
-    
-    playSound('levelup');
+function closeLevelUpModal() {
+    document.getElementById('levelUpModal').classList.remove('show');
 }
 
-function addAttributePoint(attribute) {
-    if (gameState.playerData.availablePoints > 0) {
-        gameState.playerData.attributes[attribute]++;
-        gameState.playerData.availablePoints--;
-        updateUI();
-        saveGameState();
-        playSound('attribute');
-    }
+function showGoalModal(goalId) {
+    const goal = gameState.goals.find(g => g.id === goalId);
+    if (!goal) return;
+    
+    const modal = document.getElementById('goalModal');
+    modal.dataset.goalId = goalId;
+    
+    document.getElementById('goalModalTitle').textContent = goal.name;
+    document.getElementById('goalModalDescription').textContent = goal.description;
+    document.getElementById('goalStatusSelect').value = goal.status;
+    
+    modal.classList.add('show');
 }
 
-export { gainXP, levelUp, addAttributePoint };
+function closeGoalModal() {
+    document.getElementById('goalModal').classList.remove('show');
+}
+
+export { showLevelUpModal, closeLevelUpModal, showGoalModal, closeGoalModal };

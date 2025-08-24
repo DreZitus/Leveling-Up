@@ -1,6 +1,8 @@
 import { gameState, saveGameState } from './state.js';
 import { renderGoalsMap, renderQuests } from './ui.js';
 import { completeQuest } from './quests.js';
+import { showGoalModal } from './modals.js';
+import { removeGoal as removeGoalFunction } from './goals.js'; // Renomeado para evitar conflito
 
 // Forma de objetivo por evento
 document.getElementById('goalForm').addEventListener('submit', function(e) {

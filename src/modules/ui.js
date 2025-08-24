@@ -1,8 +1,7 @@
-import { gameState, saveGameState } from './state.js';
+import { gameState } from './state.js';
 import { completeQuest, deleteQuest } from './quests.js';
 import { showGoalModal } from './modals.js';
 import { removeGoal } from './goals.js';
-import { playSound } from './utils.js';
 
 function updateUI() {
     document.getElementById('playerLevel').textContent = gameState.playerData.level;
