@@ -4,7 +4,6 @@ import { gainXP } from './player.js';
 import { unlockAchievement } from './utils.js';
 import { updateGoalStatus } from './goals.js';
 import { playSound } from './utils.js';
-import { populateGoalOptions, toggleGoalSelection } from './quests.js';
 
 function handleQuestSubmission(e) {
     e.preventDefault();
