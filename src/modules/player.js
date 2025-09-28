@@ -29,8 +29,14 @@ function showGoalModal(goalId) {
     modal.classList.add('show');
 }
 
+
 function closeGoalModal() {
     document.getElementById('goalModal').classList.remove('show');
 }
 
-export { showLevelUpModal, closeLevelUpModal, showGoalModal, closeGoalModal };
+function gainXP(amount) {
+    gameState.playerData.xp += amount;
+    // Aqui você pode adicionar lógica para subir de nível, atualizar UI, etc.
+}
+
+export { showLevelUpModal, closeLevelUpModal, showGoalModal, closeGoalModal, gainXP };
