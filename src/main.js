@@ -19,47 +19,28 @@ document.addEventListener('DOMContentLoaded', function() {
 function setupEventListeners() {
     // Tab navigation
     const tabButtons = document.querySelectorAll('.tab-btn');
-    if (tabButtons.length) {
-        tabButtons.forEach(btn => {
-            btn.addEventListener('click', () => switchTab(btn.dataset.tab));
-        });
-    }
+    tabButtons.forEach(btn => {
+        btn.addEventListener('click', () => switchTab(btn.dataset.tab));
+    });
 
     // Dark mode toggle
-    const darkModeToggle = document.getElementById('darkModeToggle');
-    if (darkModeToggle) {
-        darkModeToggle.addEventListener('click', toggleDarkMode);
-    }
+    document.getElementById('darkModeToggle').addEventListener('click', toggleDarkMode);
 
     // Quest form
-    const questForm = document.getElementById('questForm');
-    if (questForm) {
-        questForm.addEventListener('submit', handleQuestSubmission);
-    }
-    const questType = document.getElementById('questType');
-    if (questType) {
-        questType.addEventListener('change', toggleGoalSelection);
-    }
+    document.getElementById('questForm').addEventListener('submit', handleQuestSubmission);
+    document.getElementById('questType').addEventListener('change', toggleGoalSelection);
 
     // Attribute buttons
     const attributeButtons = document.querySelectorAll('.attribute-btn');
-    if (attributeButtons.length) {
-        attributeButtons.forEach(btn => {
-            btn.addEventListener('click', () => addAttributePoint(btn.dataset.attribute));
-        });
-    }
+    attributeButtons.forEach(btn => {
+        btn.addEventListener('click', () => addAttributePoint(btn.dataset.attribute));
+    });
 
     // Goal status selection
-    const goalStatusSelect = document.getElementById('goalStatusSelect');
-    if (goalStatusSelect) {
-        goalStatusSelect.addEventListener('change', function() {
-            const selectedGoal = document.getElementById('goalModal').dataset.goalId;
-            if (selectedGoal) {
-                updateGoalStatus(parseInt(selectedGoal), this.value);
-            }
-        });
-    }
-};
-    import { closeLevelUpModal, closeGoalModal } from './modules/modals.js';
-    window.closeLevelUpModal = closeLevelUpModal;
-    window.closeGoalModal = closeGoalModal;
+    document.getElementById('goalStatusSelect').addEventListener('change', function() {
+        const selectedGoal = document.getElementById('goalModal').dataset.goalId;
+        if (selectedGoal) {
+            updateGoalStatus(parseInt(selectedGoal), this.value);
+        }
+    });
+};  
