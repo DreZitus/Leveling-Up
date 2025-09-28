@@ -19,28 +19,44 @@ document.addEventListener('DOMContentLoaded', function() {
 function setupEventListeners() {
     // Tab navigation
     const tabButtons = document.querySelectorAll('.tab-btn');
-    tabButtons.forEach(btn => {
-        btn.addEventListener('click', () => switchTab(btn.dataset.tab));
-    });
+    if (tabButtons.length) {
+        tabButtons.forEach(btn => {
+            btn.addEventListener('click', () => switchTab(btn.dataset.tab));
+        });
+    }
 
     // Dark mode toggle
-    document.getElementById('darkModeToggle').addEventListener('click', toggleDarkMode);
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    if (darkModeToggle) {
+        darkModeToggle.addEventListener('click', toggleDarkMode);
+    }
 
     // Quest form
-    document.getElementById('questForm').addEventListener('submit', handleQuestSubmission);
-    document.getElementById('questType').addEventListener('change', toggleGoalSelection);
+    const questForm = document.getElementById('questForm');
+    if (questForm) {
+        questForm.addEventListener('submit', handleQuestSubmission);
+    }
+    const questType = document.getElementById('questType');
+    if (questType) {
+        questType.addEventListener('change', toggleGoalSelection);
+    }
 
     // Attribute buttons
     const attributeButtons = document.querySelectorAll('.attribute-btn');
-    attributeButtons.forEach(btn => {
-        btn.addEventListener('click', () => addAttributePoint(btn.dataset.attribute));
-    });
+    if (attributeButtons.length) {
+        attributeButtons.forEach(btn => {
+            btn.addEventListener('click', () => addAttributePoint(btn.dataset.attribute));
+        });
+    }
 
     // Goal status selection
-    document.getElementById('goalStatusSelect').addEventListener('change', function() {
-        const selectedGoal = document.getElementById('goalModal').dataset.goalId;
-        if (selectedGoal) {
-            updateGoalStatus(parseInt(selectedGoal), this.value);
-        }
-    });
+    const goalStatusSelect = document.getElementById('goalStatusSelect');
+    if (goalStatusSelect) {
+        goalStatusSelect.addEventListener('change', function() {
+            const selectedGoal = document.getElementById('goalModal').dataset.goalId;
+            if (selectedGoal) {
+                updateGoalStatus(parseInt(selectedGoal), this.value);
+            }
+        });
+    }
 };  
