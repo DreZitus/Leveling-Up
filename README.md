@@ -1,7 +1,8 @@
 🎮 GAMELIFE prototipo.
 
 📖 Introdução
-Bem-vindo ao GAMELIFE, uma aplicação web que transforma o gerenciamento de metas e tarefas em uma experiência gamificada. Combinando elementos de RPG com um sistema visual intuitivo para Visualização de Metas pessoais e construção de quests.
+Leveling Up é uma aplicação web (em breve um aplicativo mobile) que transforma o gerenciamento de metas e tarefas em uma experiência gamificada. 
+Combinando elementos de RPG com elementos de recompensa e punição seguindo praticas da psicologia para indução e engajamento com o cérebro humano.
 
 🚀 Como Começar
 Primeiro Acesso
